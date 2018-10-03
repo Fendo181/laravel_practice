@@ -56,3 +56,11 @@ docker-compose exec --user=laradock workspace bash
 $ ls
 app  artisan  bootstrap  composer.json  composer.lock  config  database  package.json  phpunit.xml  public  readme.md  resources  routes  server.php  storage  tests  vendor  webpack.mix.js
 ```
+
+##### ブラウザで確認する
+
+以下のURLにアクセスすると、laravelの起動ページ表示されます。お疲れ様でした。
+
+```
+http://localhost/
+```
