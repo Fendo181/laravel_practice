@@ -19,3 +19,7 @@ Route::get('/home', function () {
     return view('home');
 });
 
+//Auth
+Route::get('auth/register', 'Auth\RegisterController@showRegistration');
+Route::post('auth/register', 'Auth\RegisterController@register');
+
