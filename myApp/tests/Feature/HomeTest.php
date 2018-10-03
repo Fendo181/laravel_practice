@@ -8,13 +8,17 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class HomeTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    public function testStatusCode()
     {
-        $this->assertTrue(true);
+        $response = $this->get('/home');
+
+        $response->assertStatus(200);
+    }
+
+    public function testBody()
+    {
+        $response = $this->get('/home');
+
+        $response->assertSeeText("こんにちは！");
     }
 }
