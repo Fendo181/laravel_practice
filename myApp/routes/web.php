@@ -20,6 +20,7 @@ Route::get('/home', function () {
 });
 
 //Auth
-Route::get('auth/register', 'Auth\RegisterController@showRegistration');
+
+Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('auth/register', 'Auth\RegisterController@register');
 
