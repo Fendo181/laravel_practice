@@ -4,9 +4,8 @@ Laravelの基礎文法や興味があるライブラリを検証する為のrepo
 
 ### 環境構築
 
-[Laradock](https://laradock.io/)を使って環境を構築します
-
-起動
+[Laradock](https://laradock.io/)を使って環境を構築しています。
+以下起動手順です。
 
 
 #### docker-composeでコンテナを立ち上げる
@@ -28,6 +27,7 @@ docker-compose  exec --user=laradock workspace bash
 ```
 
 Laravelのプロジェクトを新規作成する。
+`-prefer-dist`で作成するlaravelの`version`を指定する事ができます。
 
 ```bash
 cd /var/www
@@ -37,7 +37,7 @@ composer create-project laravel/laravel myApp --prefer-dist "5.5.*"
 #### 共有ディレクトリの設定
 
 laradoc内の`.env`の`APP_CODE_PATH_HOST`を以下のように変更する。
-以降はローカルとコンテナ内のプロジェクトが同期されている為ローカルで変更すると仮想環境へのコンテナ側にも反映されるようになる
+こうする事でローカルとコンテナ内のプロジェクトが同期されている為ローカルで変更すると仮想環境へのコンテナ側にも反映されるようになります。
 
 ```bash
 APP_CODE_PATH_HOST=../myApp
@@ -49,7 +49,7 @@ APP_CODE_PATH_HOST=../myApp
 docker-compose up -d nginx mysql  
 ```
 
-workspacコンテナにはいる。myAppと同期されている事を確認した。
+workspacコンテナにはいる。
 
 ```bash
 docker-compose exec --user=laradock workspace bash                  
@@ -61,6 +61,5 @@ app  artisan  bootstrap  composer.json  composer.lock  config  database  package
 
 以下のURLにアクセスすると、laravelの起動ページ表示されます。お疲れ様でした。
 
-```
-http://localhost/
-```
+
+`http://localhost/`
