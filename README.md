@@ -63,3 +63,39 @@ app  artisan  bootstrap  composer.json  composer.lock  config  database  package
 
 
 `http://localhost/`
+
+### Databaseの設定
+
+ここで議論されているように`mysql 8.0`以上だと`php artisan migrate`実行時にエラーが発生します。
+
+[SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client · Issue #1392 · laradock/laradock](https://github.com/laradock/laradock/issues/1392#issuecomment-409612243)
+
+対策として、まずアプリケーションの`.env`ファイルの`DB_HOST`をmysqlコンテナに合わせて変更します。
+
+```bash
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=default
+DB_USERNAME=default
+DB_PASSWORD=secret
+```
+
+次にmsyqlコンテナに入り、ユーザの権限を変更します。
+
+mysqlコンテナに入る。
+
+```bash
+$ docker-compose exec mysql bash
+$ mysql -u root -p 
+```
+
+ユーザの権限を変更する
+
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
+ALTER USER 'default'@'%' IDENTIFIED WITH mysql_native_password BY 'secret';
+```
+
+これで`php artisan migrate`が実行できます。
