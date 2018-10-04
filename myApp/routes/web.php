@@ -21,6 +21,11 @@ Route::get('/home', function () {
 
 //Auth
 
+// Sign Up
 Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('auth/register', 'Auth\RegisterController@register');
-
+// Login
+Route::get('auth/login', 'Auth\LoginController@showLoginForm');
+Route::post('auth/login', 'Auth\LoginController@login');
+// logout
+Route::get('auth/logout', 'Auth\LoginController@logout');
