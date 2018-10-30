@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-Route::groupe(['middleware' => 'api'],function () {
+Route::group(['middleware' => 'api'],function () {
     Route::get('articles', function (){
         $articles = Article::all()->take(5);
         return $articles;
