@@ -63,3 +63,11 @@ app  artisan  bootstrap  composer.json  composer.lock  config  database  package
 
 
 `http://localhost/`
+
+### Tips
+
+mysqlコンテナに入る
+
+```
+mysql -udefault -p secret
+```
