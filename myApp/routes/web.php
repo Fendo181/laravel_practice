@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/app',function (){
    return view('app');
 });
+
+Route::get('/todo',function (){
+    return view('todo');
+});
