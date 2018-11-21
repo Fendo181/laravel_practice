@@ -14,6 +14,7 @@ Laravelの基礎文法や興味があるライブラリを検証する為のrepo
 # laradocをcloneしてくる
 git clone https://github.com/Laradock/laradock.git
 cd laradoc
+cp env-example .env
 docker-compose up -d nginx mysql workspace phpmyadmin  
 ```
 
