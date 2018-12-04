@@ -18,7 +18,7 @@ git clone git@github.com:Fendo181/laravel_repos.git
 git clone https://github.com/Laradock/laradock.git
 cd laradoc
 cp env-example .env
-docker-compose up -d nginx mysql workspace phpmyadmin  
+docker-compose up -d nginx mysql workspace phpmyadmin
 ```
 
 #### workspaceコンテナに入り、laravelのプロジェクトを作成する
@@ -45,7 +45,7 @@ Mysql8.0から設定が一部変更が変わったので、`php artisan migrate`
 
 ```sql
 docker-compose exec mysql bash
-mysql -u root -p  #secret
+mysql -udefault -p #secret
 ```
 
 以下のコマンドを実行する
@@ -81,13 +81,13 @@ APP_CODE_PATH_HOST=../myApp
 再度起動して確認する。
 
 ```bash
-docker-compose up -d nginx mysql  
+docker-compose up -d nginx mysql
 ```
 
 workspacコンテナにはいる。
 
 ```bash
-docker-compose exec --user=laradock workspace bash                  
+docker-compose exec --user=laradock workspace bash
 $ ls
 app  artisan  bootstrap  composer.json  composer.lock  config  database  package.json  phpunit.xml  public  readme.md  resources  routes  server.php  storage  tests  vendor  webpack.mix.js
 ```
