@@ -11,6 +11,9 @@ Laravelの基礎文法や興味があるライブラリを検証する為のrepo
 #### docker-composeでコンテナを立ち上げる
 
 ```bash
+# laravel_reposをcloneしてくる
+git clone git@github.com:Fendo181/laravel_repos.git
+
 # laradocをcloneしてくる
 git clone https://github.com/Laradock/laradock.git
 cd laradoc
