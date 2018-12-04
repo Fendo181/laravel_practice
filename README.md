@@ -11,10 +11,14 @@ Laravelの基礎文法や興味があるライブラリを検証する為のrepo
 #### docker-composeでコンテナを立ち上げる
 
 ```bash
+# laravel_reposをcloneしてくる
+git clone git@github.com:Fendo181/laravel_repos.git
+
 # laradocをcloneしてくる
 git clone https://github.com/Laradock/laradock.git
 cd laradoc
-docker-compose up -d nginx mysql workspace phpmyadmin  
+cp env-example .env
+docker-compose up -d nginx mysql workspace phpmyadmin
 ```
 
 #### workspaceコンテナに入り、laravelのプロジェクトを作成する
@@ -34,6 +38,48 @@ cd /var/www
 composer create-project laravel/laravel myApp --prefer-dist "5.5.*"
 ```
 
+##### DBの設定
+
+Mysql8.0から設定が一部変更が変わったので、`php artisan migrate`をそのまま行うとエラーが起きる。
+その為、mysqlに入って設定を変更する必要があります。
+
+`.env`のmysqlの設定を以下のようにする
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=default
+DB_USERNAME=default
+DB_PASSWORD=secret
+```
+
+```sql
+docker-compose exec mysql bash
+mysql -udefault -p #secret
+```
+
+以下のコマンドを実行する
+
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
+ALTER USER 'default'@'%' IDENTIFIED WITH mysql_native_password BY 'secret';
+```
+
+この状態でworkspaceブランチに入り、php artisan migrateを実行する。
+
+```sql
+root@fe37a2b5e984:/var/www# php artisan migrate
+Migration table created successfully.
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table
+```
+
+ref: [MySQL 8.0以上だとphp artsian migrate時にエラーが発生する · Issue #2 · Fendo181/laravel_repos](https://github.com/Fendo181/laravel_repos/issues/2)
+
 #### 共有ディレクトリの設定
 
 laradoc内の`.env`の`APP_CODE_PATH_HOST`を以下のように変更する。
@@ -46,13 +92,13 @@ APP_CODE_PATH_HOST=../myApp
 再度起動して確認する。
 
 ```bash
-docker-compose up -d nginx mysql  
+docker-compose up -d nginx mysql
 ```
 
 workspacコンテナにはいる。
 
 ```bash
-docker-compose exec --user=laradock workspace bash                  
+docker-compose exec --user=laradock workspace bash
 $ ls
 app  artisan  bootstrap  composer.json  composer.lock  config  database  package.json  phpunit.xml  public  readme.md  resources  routes  server.php  storage  tests  vendor  webpack.mix.js
 ```
