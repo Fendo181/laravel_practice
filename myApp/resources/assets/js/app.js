@@ -1,15 +1,15 @@
 // Vueルータ
-import Vue from 'Vue';
-import VueRouter from 'vue-router';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
 Vue.use(VueRouter);
 
-import App from './views/App';
-import Hello from './views/Hello';
-import Home from './views/Home';
+import App from './views/App'
+import Hello from './views/Hello'
+import Home from './views/Home'
 
 // ルーティング
-const routter = new VueRouter({
+const router = new VueRouter({
     mode:'history',
     routes:[
         {
@@ -25,8 +25,11 @@ const routter = new VueRouter({
     ],
 });
 
+//読み込み
 const app = new Vue({
-    el:'#app',
+    // id=app
+    el: '#app',
     components: { App },
+    // ルーティング
     router,
 });
