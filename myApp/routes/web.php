@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('Hello');
+    return view('home');
 });
 
 //Route::get('/{any}', 'SpaController@index')->where('any', '.*');
