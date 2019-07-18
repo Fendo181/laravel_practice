@@ -92,7 +92,7 @@ APP_CODE_PATH_HOST=../myApp
 再度起動して確認する。
 
 ```bash
-docker-compose up -d nginx mysql
+docker-compose up -d nginx mysql mailhog  
 ```
 
 workspacコンテナにはいる。
