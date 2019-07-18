@@ -23,6 +23,9 @@ Route::post('auth/register', 'Auth\RegisterController@register');
 Route::get('auth/login', 'Auth\LoginController@showLoginForm');
 Route::post('auth/login', 'Auth\LoginController@login');
 
+// Logout
+Route::get('auth/logout', 'Auth\LoginController@logout');
+
 
 
 Route::get('/spa/{any}', 'SpaController@index')->where('any', '.*');
