@@ -19,4 +19,4 @@ Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('auth/register', 'Auth\RegisterController@register');
 
 
-//Route::get('/{any}', 'SpaController@index')->where('any', '.*');
+Route::get('/spa/{any}', 'SpaController@index')->where('any', '.*');
