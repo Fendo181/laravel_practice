@@ -13,8 +13,19 @@
     <div class="content">
         @if(Auth::check())
             {{ \Auth::user()->name }} さん、こんばんわ!
+            <p>
+                <a href="/auth/logout">ログアウト</a>
+            </p>
+
         @else
             ゲストさん、こんにちは！
+        <p>
+            <a href="/auth/login">ログイン</a>
+        </p>
+
+        <p>
+            <a href="/auth/register">会員登録</a>
+        </p>
         @endif
     </div>
     </body>
