@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Sc cccccccchema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -15,6 +15,8 @@ class CreatePublishersTable extends Migration
     {
         Schema::create('publishers', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name',100);
+            $table->text('address');
             $table->timestamps();
         });
     }
