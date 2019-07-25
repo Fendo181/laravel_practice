@@ -11,8 +11,21 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/home', function () {
+    return view('home');
+});
 
-Route::get('/{any}', 'SpaController@index')->where('any', '.*');
+// Signup
+Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
+Route::post('auth/register', 'Auth\RegisterController@register');
+
+// Login
+Route::get('auth/login', 'Auth\LoginController@showLoginForm');
+Route::post('auth/login', 'Auth\LoginController@login');
+
+// Logout
+Route::get('auth/logout', 'Auth\LoginController@logout');
+
+
+
+Route::get('/spa/{any}', 'SpaController@index')->where('any', '.*');
