@@ -17,8 +17,8 @@ class CreateBooksTable extends Migration
             $table->bigIncrements('id')->index();
             $table->string('name');
             $table->integer('bookdetail_id')->index();
-            $table->intager('author_id')->index();
-            $table->intager('publisher_id')->index();
+            $table->integer('author_id')->index();
+            $table->integer('publisher_id')->index();
             $table->timestamps();
         });
     }
