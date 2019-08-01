@@ -40,6 +40,13 @@ composer create-project laravel/laravel myApp --prefer-dist "5.5.*"
 
 ##### DBの設定
 
+DBに入る方法
+
+```sql
+docker-compose exec mysql bash
+mysql -udefault -p #secret
+```
+
 Mysql8.0から設定が一部変更が変わったので、`php artisan migrate`をそのまま行うとエラーが起きる。
 その為、mysqlに入って設定を変更する必要があります。
 
@@ -54,10 +61,12 @@ DB_USERNAME=default
 DB_PASSWORD=secret
 ```
 
+ルートユーザで入る
+
 ```sql
-docker-compose exec mysql bash
-mysql -udefault -p #secret
+mysql -root -p#root
 ```
+
 
 以下のコマンドを実行する
 
