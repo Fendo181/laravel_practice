@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Input;
 class SampleController extends Controller
 {
     public function index() {
-        $name = Input::get('name');
+        $name = Input::get('name','Okazaki');
         echo "HelloWold!{$name}";
     }
 }
