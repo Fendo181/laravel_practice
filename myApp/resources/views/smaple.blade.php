@@ -13,5 +13,20 @@
     <p>
         My Name is {{$name}}
     </p>
+    <h3>Input Form</h3>
+    <form action={{ url('/sample/store')}} method='POST'>
+    {{ csrf_field() }}
+    <div>
+        <label>Title</label><br>
+        <input type="text" name="title" />
+    </div>
+    <div>
+        <label>Body</label><br>
+        <textarea name="body"></textarea>
+    </div>
+    <div>
+        <input type="submit" value="Create" />
+    </div>
+    </form>
     </body>
 </html>
