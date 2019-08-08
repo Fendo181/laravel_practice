@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use App\Http\Requests\SmapleRequest;
 use Illuminate\Support\Facades\Input;
 
 class SampleController extends Controller
@@ -14,7 +15,7 @@ class SampleController extends Controller
         ]);
     }
 
-    public function store(Request $request) {
+    public function store(SmapleRequest $request) {
         $name = Input::get('name','Okazaki');
 //        $post = \Request::all();
         $name = $request->input('name');

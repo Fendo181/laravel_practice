@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+// フォームリクエスト
 class SmapleRequest extends FormRequest
 {
     /**
@@ -13,7 +14,7 @@ class SmapleRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
