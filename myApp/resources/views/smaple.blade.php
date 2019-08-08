@@ -11,7 +11,7 @@
     <body>
     <h3>Sample App</h3>
     <p>
-        My Name is {{$name}}
+        My Name is {{$name}} and My Body is {{$body}}
     </p>
     <h3>Input Form</h3>
     <form action={{ url('/sample/store')}} method='POST'>

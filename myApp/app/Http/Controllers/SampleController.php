@@ -14,13 +14,16 @@ class SampleController extends Controller
         ]);
     }
 
-    public function store() {
+    public function store(Request $request) {
         $name = Input::get('name','Okazaki');
-        $post = \Request::all();
-        var_dump($post);
+//        $post = \Request::all();
+        $name = $request->input('name');
+        $body = $request->input('body');
+
         return view('smaple',[
             'name' => $name,
-            'posts' => $post
+            'body' => $body,
+//            'posts' => $post
         ]);
     }
 
