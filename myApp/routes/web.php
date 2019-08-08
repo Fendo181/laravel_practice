@@ -17,6 +17,7 @@ Route::get('/home', function () {
 
 
 Route::get('sample', 'SampleController@index');
+Route::post('sample/store', 'SampleController@store');
 
 // Signup
 Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
