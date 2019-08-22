@@ -23,11 +23,11 @@
     {{ csrf_field() }}
     <div>
         <label>First Name</label><br>
-        <input type="text" name="first-name" />
+        <input type="text" name="firstName" />
     </div>
     <div>
         <label>Last Name</label><br>
-        <input type="text" name="last-name" />
+        <input type="text" name="lastName" />
     </div>
     <div>
         <label>Memo</label><br>
