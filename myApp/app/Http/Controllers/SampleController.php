@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SmapleRequest;
-use Illuminate\Validation\Factory;
 use Illuminate\Support\Facades\Input;
 
 class SampleController extends Controller
