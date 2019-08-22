@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SmapleRequest;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+//use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Response;
 
 class SampleController extends Controller
 {
@@ -33,7 +34,7 @@ class SampleController extends Controller
 
     public function responseText(Request $request)
     {
-        $response = Response::create('Hello Wold!');
+        $response = Response::make('Hello Wold!');
         $response = response('HeYHeY!',
             Response::HTTP_ACCEPTED,
             [
