@@ -12,7 +12,7 @@ class SampleController extends Controller
         $firstName = Input::get('firstName','endo');
         $lastName = Input::get('lastName','futoshi');
         $memo = Input::get('memo','特になし');
-        return view('smaple',[
+        return view('sample',[
             'firstName' => $firstName,
             'lastName'=> $lastName,
             'memo' => $memo
