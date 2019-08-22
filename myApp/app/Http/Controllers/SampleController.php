@@ -19,16 +19,28 @@ class SampleController extends Controller
         ]);
     }
 
-    public function store(SmapleRequest $request) {
-        $name = Input::get('name','Okazaki');
-//        $post = \Request::all();
-        $name = $request->input('name');
-        $body = $request->input('body');
+    public function store(SmapleRequest $request, Factory $validatorFactory) {
 
-        return view('smaple',[
-            'name' => $name,
-            'body' => $body,
-//            'posts' => $post
+        $inputs = $request->all();
+
+        $rules = [
+            'firstName"' => 'required',
+            'lastName' => 'max:10',
+            'memo' => 'required'
+        ];
+
+        $validator = $validatorFactory->make($inputs, $rules);
+
+        if($validator->fails()){
+            echo 'Error!';
+        }else{
+            echo 'OK!';
+        }
+
+        return view('sample',[
+            'firstName' => $inputs['firstName'],
+            'lastName'=>  $inputs['lastName'],
+            'memo' =>  $inputs['memo']
         ]);
     }
 
