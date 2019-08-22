@@ -25,7 +25,9 @@ class SmapleRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'firstName"' => ['required','max:10'],
+            'lastName' => ['required','max:10'],
+            'memo' => 'required'
         ];
     }
 }

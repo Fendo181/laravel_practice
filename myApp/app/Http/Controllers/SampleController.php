@@ -19,23 +19,9 @@ class SampleController extends Controller
         ]);
     }
 
-    public function store(SmapleRequest $request, Factory $validatorFactory) {
-
+    public function store(SmapleRequest $request)
+    {
         $inputs = $request->all();
-
-        $rules = [
-            'firstName"' => 'required',
-            'lastName' => 'max:10',
-            'memo' => 'required'
-        ];
-
-        $validator = $validatorFactory->make($inputs, $rules);
-
-        if($validator->fails()){
-            echo 'Error!';
-        }else{
-            echo 'OK!';
-        }
 
         return view('sample',[
             'firstName' => $inputs['firstName'],
