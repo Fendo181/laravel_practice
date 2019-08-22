@@ -20,6 +20,7 @@ Route::get('sample', 'SampleController@index');
 Route::post('sample/store', 'SampleController@store');
 
 Route::get('sample/response', 'SampleController@responseText');
+Route::get('sample/response/view', 'SampleController@responseView');
 
 // Signup
 Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');

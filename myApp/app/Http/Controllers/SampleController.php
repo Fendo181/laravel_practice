@@ -43,5 +43,10 @@ class SampleController extends Controller
         return $response;
     }
 
+    public function responseView(Request $request)
+    {
+        $response = view('home');
+    }
+
 
 }
