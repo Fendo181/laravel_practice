@@ -34,6 +34,12 @@ class SampleController extends Controller
     public function responseText(Request $request)
     {
         $response = Response::create('Hello Wold!');
+        $response = response('HeYHeY!',
+            Response::HTTP_ACCEPTED,
+            [
+                'content-type' => 'text/plain',
+            ]
+        );
         return $response;
     }
 
