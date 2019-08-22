@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
 use App\Http\Requests\SmapleRequest;
+use Illuminate\Validation\Factory;
 use Illuminate\Support\Facades\Input;
 
 class SampleController extends Controller
 {
     public function index() {
-        $name = Input::get('name','Okazaki');
+        $name = Input::get('name','endo');
+        $body = Input::get('body','futoshi');
         return view('smaple',[
-            'name' => $name
+            'name' => $name,
+            'body'=> $body
         ]);
     }
 
