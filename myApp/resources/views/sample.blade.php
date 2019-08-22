@@ -9,6 +9,13 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     </head>
     <body>
+
+    @if(count($errors) > 0 )
+        @foreach($errors->all() as $error)
+            <li> {{ $error }}</li>
+        @endforeach
+    @endif
+
     <h3>Sample App</h3>
     <p>
         My Name is {{$firstName}} {{$lastName}}
