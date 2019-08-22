@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
 use App\Http\Requests\SmapleRequest;
 use Illuminate\Validation\Factory;
 use Illuminate\Support\Facades\Input;
