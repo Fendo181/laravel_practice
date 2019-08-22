@@ -11,18 +11,27 @@
     <body>
     <h3>Sample App</h3>
     <p>
-        My Name is {{$name}} and My Body is {{$body}}
+        My Name is {{$firstName}} {{$lastName}}
     </p>
+    <h3>メモ欄</h3>
+    <p>
+        {{$memo}}
+    </p>
+
     <h3>Input Form</h3>
     <form action={{ url('/sample/store')}} method='POST'>
     {{ csrf_field() }}
     <div>
-        <label>Title</label><br>
-        <input type="text" name="title" />
+        <label>First Name</label><br>
+        <input type="text" name="first-name" />
     </div>
     <div>
-        <label>Body</label><br>
-        <textarea name="body"></textarea>
+        <label>Last Name</label><br>
+        <input type="text" name="last-name" />
+    </div>
+    <div>
+        <label>Memo</label><br>
+        <textarea name="memo"></textarea>
     </div>
     <div>
         <input type="submit" value="Create" />

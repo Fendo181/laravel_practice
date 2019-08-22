@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Input;
 class SampleController extends Controller
 {
     public function index() {
-        $name = Input::get('name','endo');
-        $body = Input::get('body','futoshi');
+        $firstName = Input::get('firstName','endo');
+        $lastName = Input::get('lastName','futoshi');
+        $memo = Input::get('memo','特になし');
         return view('smaple',[
-            'name' => $name,
-            'body'=> $body
+            'firstName' => $firstName,
+            'lastName'=> $lastName,
+            'memo' => $memo
         ]);
     }
 
