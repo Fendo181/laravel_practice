@@ -20,3 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('customers',function(){
 
 });
+
+Route::post('customers',function(){
+
+});
+
