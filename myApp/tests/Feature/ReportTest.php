@@ -38,4 +38,23 @@ class ReportTest extends TestCase
         $response = $this->GET('/api/customers/1');
         $response->assertStatus(200);
     }
+
+    /**
+     * cutstomer_idに対しPUTでアクセスできる
+     */
+    public function test_api_cutstomer_idにPUTメソッドでアクセスできる()
+    {
+        $response = $this->PUT('/api/customers/1');
+        $response->assertStatus(200);
+    }
+
+    /**
+     * cutstomer_idに対しDELETEでアクセスできる
+     */
+    public function test_api_cutstomer_idにDELETEメソッドでアクセスできる()
+    {
+        $response = $this->DELETE('/api/customers/1');
+        $response->assertStatus(200);
+    }
+
 }
