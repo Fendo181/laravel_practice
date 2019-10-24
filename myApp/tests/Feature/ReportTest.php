@@ -66,5 +66,14 @@ class ReportTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * cutstomer_idに対しPOSTでアクセスできる
+     */
+    public function test_api_reportsにPOSTメソッドでアクセスできる()
+    {
+        $response = $this->POST('/api/reports');
+        $response->assertStatus(200);
+    }
+
 
 }
