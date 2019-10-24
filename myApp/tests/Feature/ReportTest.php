@@ -75,5 +75,32 @@ class ReportTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * reports_idにGETでアクセスできる
+     * @test
+     */
+    public function test_api_reports_idにGETメソッドでアクセスできる()
+    {
+        $response = $this->GET('/api/reports/1');
+        $response->assertStatus(200);
+    }
+
+    /**
+     * reports_idにPUTでアクセスできる
+     */
+    public function test_api_reports_idにPUTメソッドでアクセスできる()
+    {
+        $response = $this->PUT('/api/reports/1');
+        $response->assertStatus(200);
+    }
+
+    /**
+     * reports_idにDELETEでアクセスできる
+     */
+    public function test_api_reports_idにDELETEメソッドでアクセスできる()
+    {
+        $response = $this->DELETE('/api/reports/1');
+        $response->assertStatus(200);
+    }
 
 }
