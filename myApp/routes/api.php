@@ -25,3 +25,7 @@ Route::post('customers',function(){
 
 });
 
+Route::get('customers/{customer_id}',function(){
+
+});
+
