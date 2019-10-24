@@ -58,7 +58,7 @@ class ReportTest extends TestCase
     }
 
     /**
-     * cutstomer_idに対しGETでアクセスできる
+     * reportsに対しGETでアクセスできる
      */
     public function test_api_reportsにGETメソッドでアクセスできる()
     {
@@ -67,7 +67,7 @@ class ReportTest extends TestCase
     }
 
     /**
-     * cutstomer_idに対しPOSTでアクセスできる
+     * reportsに対しPOSTでアクセスできる
      */
     public function test_api_reportsにPOSTメソッドでアクセスできる()
     {
