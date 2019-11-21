@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    マネクラにLaravelがデプロイできる！！最高！！！
+                    Welcome Laravel
                 </div>
 
                 <div class="links">
