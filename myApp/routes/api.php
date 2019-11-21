@@ -16,3 +16,18 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('customers',function(){});
+Route::post('customers',function(){});
+
+Route::get('customers/{customer_id}',function(){});
+Route::put('customers/{customer_id}',function(){});
+Route::delete('customers/{customer_id}',function(){});
+
+Route::get('reports',function(){});
+Route::post('reports',function(){});
+
+Route::get('reports/{reports_id}',function(){});
+Route::put('reports/{reports_id}',function(){});
+Route::delete('reports/{reports_id}',function(){});
+
