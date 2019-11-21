@@ -1,2 +1,5 @@
 .idea/
-laradock/
+.env
+docker-dev/.env
+docker-dev/logs
+
