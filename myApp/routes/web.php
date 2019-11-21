@@ -25,7 +25,4 @@ Route::post('auth/login', 'Auth\LoginController@login');
 
 // Logout
 Route::get('auth/logout', 'Auth\LoginController@logout');
-
-
-
 Route::get('/spa/{any}', 'SpaController@index')->where('any', '.*');
