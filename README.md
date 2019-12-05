@@ -20,7 +20,7 @@ Laravelの基礎文法や興味があるライブラリを検証する為のrepo
 
 コンテナに入る場合のそれぞれのコマンドは
 
-#### alpine京
+#### alpine系
 
 ```sh
 docker-compose exex app ash
