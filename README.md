@@ -34,7 +34,7 @@ docker-compose exex db bash
 
 です。
 
-#### docker-composeでコンテナを立ち上げる
+### docker-composeでプロジェクトで必要なコンテナを立ち上げる
 
 ```bash
 git clone https://github.com/Fendo181/laravel_practice.git
@@ -43,7 +43,7 @@ cp .env.example .env #環境ファイルをコピー
 docker-compose up #起動 
 ```
 
-#### Laravelのプロジェクトを起動する
+### Laravelのアプリケーション立ち上げの準備
 
 ```bash
 cd myapp/
@@ -54,7 +54,7 @@ php artisan key:generate
 
 でOK。
 
-##### DBの設定
+### DBの設定
 
 DBに入る方法
 
@@ -92,6 +92,8 @@ ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
 ALTER USER 'default'@'%' IDENTIFIED WITH mysql_native_password BY 'secret';
 ```
 
+### マイグレーションの実行
+
 この状態でappコンテナに入り、php artisan migrateを実行する。
 
 ```sql
@@ -116,7 +118,7 @@ docker-compose down --volumes --rmi all
 docker-compose up -d --build
 ```
 
-##### ブラウザで確認する
+#### ブラウザで確認する
 
 以下のURLにアクセスすると、laravelの起動ページ表示されます。お疲れ様でした。
 
