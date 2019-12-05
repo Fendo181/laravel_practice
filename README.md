@@ -4,39 +4,55 @@ Laravelの基礎文法や興味があるライブラリを検証する為のrepo
 
 ### 環境構築
 
-[Laradock](https://laradock.io/)を使って環境を構築しています。
+[Docker Compose](https://github.com/docker/compose)を使って環境を構築しています。
 以下起動手順です。
 
+コンテナの構成は以下の通りです。
+(※[構築PR](https://github.com/Fendo181/laravel_practice/pull/18)はこちら)
+
+- web
+  - alpine/ngnix
+- app
+  - alpine/php-fpm
+- db
+  - Debian/mysql8
+  
+
+コンテナに入る場合のそれぞれのコマンドは
+
+#### alpine京
+
+```sh
+docker-compose exex app ash
+```
+
+#### debian系
+
+```sh
+docker-compose exex db bash
+```
+
+です。
 
 #### docker-composeでコンテナを立ち上げる
 
 ```bash
-# laravel_reposをcloneしてくる
-git clone git@github.com:Fendo181/laravel_repos.git
-
-# laradocをcloneしてくる
-git clone https://github.com/Laradock/laradock.git
-cd laradoc
-cp env-example .env
-docker-compose up -d nginx mysql workspace phpmyadmin
+git clone https://github.com/Fendo181/laravel_practice.git
+cd docker-dev/
+cp .env.example .env #環境ファイルをコピー
+docker-compose up #起動 
 ```
 
-#### workspaceコンテナに入り、laravelのプロジェクトを作成する
-
-コンテナへログイン
-※予め用意されている`laradock`ユーザでログインする。
-```bash
-docker-compose  exec --user=laradock workspace bash
-
-```
-
-Laravelのプロジェクトを新規作成する。
-`-prefer-dist`で作成するlaravelの`version`を指定する事ができます。
+#### Laravelのプロジェクトを起動する
 
 ```bash
-cd /var/www
-composer create-project laravel/laravel myApp --prefer-dist "5.5.*"
+cd myapp/
+composer install
+cp .env.example .env
+php artisan key:generate
 ```
+
+でOK。
 
 ##### DBの設定
 
@@ -56,67 +72,42 @@ Mysql8.0から設定が一部変更が変わったので、`php artisan migrate`
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
-DB_DATABASE=default
+DB_DATABASE=homestead
 DB_USERNAME=default
 DB_PASSWORD=secret
 ```
-
 ※`DB_HOST`を`mysql`にして下さい。
 
 ルートユーザで入る
 
 ```sql
-mysql -root -p#root
+mysql -root -p#secret
 ```
-
 
 以下のコマンドを実行する
 
 ```sql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'secret';
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
 ALTER USER 'default'@'%' IDENTIFIED WITH mysql_native_password BY 'secret';
 ```
 
-この状態でworkspaceブランチに入り、php artisan migrateを実行する。
+この状態でappコンテナに入り、php artisan migrateを実行する。
 
 ```sql
-root@fe37a2b5e984:/var/www# php artisan migrate
+/myapp # php artisan migrate
+
 Migration table created successfully.
 Migrating: 2014_10_12_000000_create_users_table
-Migrated:  2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table (0.07 seconds)
 Migrating: 2014_10_12_100000_create_password_resets_table
-Migrated:  2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table (0.06 seconds)
 ```
 
 ref: [MySQL 8.0以上だとphp artsian migrate時にエラーが発生する · Issue #2 · Fendo181/laravel_repos](https://github.com/Fendo181/laravel_repos/issues/2)
-
-#### 共有ディレクトリの設定
-
-laradoc内の`.env`の`APP_CODE_PATH_HOST`を以下のように変更する。
-こうする事でローカルとコンテナ内のプロジェクトが同期されている為ローカルで変更すると仮想環境へのコンテナ側にも反映されるようになります。
-
-```bash
-APP_CODE_PATH_HOST=../myApp
-```
-
-再度起動して確認する。
-
-```bash
-docker-compose up -d nginx mysql mailhog  
-```
-
-workspacコンテナにはいる。
-
-```bash
-docker-compose exec --user=laradock workspace bash
-$ ls
-app  artisan  bootstrap  composer.json  composer.lock  config  database  package.json  phpunit.xml  public  readme.md  resources  routes  server.php  storage  tests  vendor  webpack.mix.js
-```
 
 ##### ブラウザで確認する
 
 以下のURLにアクセスすると、laravelの起動ページ表示されます。お疲れ様でした。
 
-
-`http://localhost/`
+`http://localhost:10080/`
