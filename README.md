@@ -106,6 +106,16 @@ Migrated:  2014_10_12_100000_create_password_resets_table (0.06 seconds)
 
 ref: [MySQL 8.0以上だとphp artsian migrate時にエラーが発生する · Issue #2 · Fendo181/laravel_repos](https://github.com/Fendo181/laravel_repos/issues/2)
 
+### 永続化されてボリュームデータを一旦削除する
+
+`docker-compose`でデータが永続化されているため、コンテナにを落としてもデータは残ります。
+しかし、一度ボリュームを削除してビルドし直したい場合は以下のコマンドを実行してください
+
+```php
+docker-compose down --volumes --rmi all
+docker-compose up -d --build
+```
+
 ##### ブラウザで確認する
 
 以下のURLにアクセスすると、laravelの起動ページ表示されます。お疲れ様でした。
